@@ -45,12 +45,13 @@ public class RegistrationViewController {
         if (password.isBlank()){
             System.out.println("please fill in the password field");
             informationLabel.setText("please fill in the password field");
+
         } else if (password.length() < 5) {
             System.out.println("password is too short, must be more than 5 characters");
             informationLabel.setText("password is too short, must be more than 5 characters");
         } else if (password.equals(confirmedPassword)){
             passwordMatches = true;
-        } else{
+        } else if (!password.equals(confirmedPassword)){
             System.out.println("Passwords must match");
             informationLabel.setText("Passwords must match");
         }
@@ -62,10 +63,10 @@ public class RegistrationViewController {
 
 
 
-        if (userChecked && passwordMatches){
+        if (userChecked && passwordMatches && checkBoxState){
             informationLabel.setStyle("-fx-text-fill: green");
             informationLabel.setText("Creating account...");
-
+            Profile.addProfile(new Profile(username,password));
             try {
 
                 Application.getApplication().switchToScene("StartView.fxml");

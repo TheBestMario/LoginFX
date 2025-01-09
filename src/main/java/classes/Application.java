@@ -14,6 +14,8 @@ public class Application extends javafx.application.Application {
     private FXMLLoader root;
     private static Application app;
 
+    private static Profile currentLogin;
+
     @Override
     public void start(Stage stage) throws IOException {
         app = this;
@@ -26,13 +28,28 @@ public class Application extends javafx.application.Application {
         return app;
     }
 
-    public void switchToScene(String fileName) throws IOException {
+    public Stage getStage(){
+        return stage;
+    }
+
+    public Object switchToScene(String fileName) throws IOException {
         root = new FXMLLoader(getClass().getResource(fileName));
         scene = new Scene(root.load());
         stage.setScene(scene);
         stage.show();
+        return root.getController();
     }
     public static void main(String[] args) {
+
+        Profile.getProfileArray()[0] = new Profile("Luigi", "fakeman123");
+        Profile.getProfileArray()[1] = new Admin("MarioG", "password");
+
         launch();
+    }
+    public static void setCurrentLoggedIn(Profile profile){
+        currentLogin = profile;
+    }
+    public static Profile getCurrentLoggedIn(){
+        return currentLogin;
     }
 }

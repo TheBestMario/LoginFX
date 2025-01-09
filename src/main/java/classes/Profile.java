@@ -8,24 +8,16 @@ public class Profile {
 
     private boolean loggedIn = false;
     private static Profile[] profiles = new Profile[10];
+
     public Profile(String username, String password) {
         this.username = username;
         this.password = password;
 
     }
-    public void setLoggedIn(boolean loggedIn) {
-        this.loggedIn = loggedIn;
-    }
-    public boolean isLoggedIn() {
-        return loggedIn;
-    }
+
 
     public Profile(String username){
         this(username, null);
-    }
-
-    public void welcomeMessage(){
-        System.out.println("Successful login, "+ username);
     }
 
     public String getUsername() {
@@ -37,6 +29,7 @@ public class Profile {
         return profiles;
     }
     public static void addProfile(Profile profile){
+        System.out.println("adding Profile to list "+profile.getUsername());
         for (int i = 0; i < profiles.length; i++) {
             if (profiles[i] == null) {
                 profiles[i] = profile;
@@ -69,36 +62,52 @@ public class Profile {
         return null;
     }
 
-    public static Map<String, Boolean> ProfileCheck(String username, String password) {
+    public static Map<String, Boolean> ProfileCheckRegistration(String username, String password) {
         Map<String, Boolean> map = new HashMap<>();
 
-        //making test profiles saved.
-        Profile.getProfileArray()[0] = new Profile("Luigi", "fakeman123");
-        Profile.getProfileArray()[1] = new Admin("MarioG", "password");
+        for (Profile profile : profiles) {
 
-
-        for (Profile profile: Profile.getProfileArray()){
-
-            if (profile == null){
-                map.put("userExists",false);
+            if (profile == null) {
+                map.put("userExists", false);
                 break;
             }
-            if (profile.username.equalsIgnoreCase(username)){
-                map.put("userExists",true);
+            if (profile.username.equalsIgnoreCase(username)) {
+                map.put("userExists", true);
 
-                if (profile.checkPassword(password)){
-                    map.put("pwdMatches",true);
+                if (profile.checkPassword(password)) {
+                    map.put("pwdMatches", true);
                     System.out.println(map);
-                }else{
-                    map.put("pwdMatches",false);
+                } else {
+                    map.put("pwdMatches", false);
                 }
 
-            }else{
-                map.put("userExists",false);
+            } else {
+                map.put("userExists", false);
             }
         }
 
         return map;
+    }
 
+    public static boolean ProfileCheck(String username, String password) {
+        for (Profile profile : profiles){
+            if (profile == null){
+                continue;
+            }
+
+            String existingName = profile.getUsername();
+            boolean existingPasswordMatches = profile.checkPassword(password);
+
+            if (existingName.equals(username) && existingPasswordMatches){
+                System.out.println("Logging in...");
+                return true;
+            } else if (existingName.equals(username) && !existingPasswordMatches) {
+                //could customise the warning here.
+                System.out.println("Incorrect password");
+                return false;
+            }
+        }
+        System.out.println("User doesn't exist");
+    return false;
     }
 }
