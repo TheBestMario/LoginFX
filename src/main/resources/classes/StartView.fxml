@@ -5,7 +5,11 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<VBox alignment="CENTER" prefHeight="300.0" prefWidth="300.0" spacing="20.0" style="-fx-background-color: #3C3131FF;" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="classes.HelloController">
+<VBox alignment="CENTER" prefHeight="300.0" prefWidth="300.0"
+      spacing="20.0" style="-fx-background-color: #3C3131FF;"
+      xmlns="http://javafx.com/javafx/11.0.14-internal"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="classes.StartViewController">
   <padding>
     <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
   </padding>
