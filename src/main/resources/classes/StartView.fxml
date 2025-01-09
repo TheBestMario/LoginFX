@@ -20,7 +20,7 @@
       <font>
          <Font size="18.0" />
       </font></Label>
-  <Button fx:id="helloButton" onAction="#onLoginButtonClick" prefHeight="25.0" prefWidth="160.0" text="Login as an existing user" />
-  <Button onAction="#onRegisterButtonClick" prefHeight="25.0" prefWidth="160.0" text="Register an account" />
+  <Button fx:id="loginButton" onAction="#onLoginButtonClick" prefHeight="25.0" prefWidth="160.0" text="Login as an existing user" />
+  <Button fx:id="registerButton" onAction="#onRegisterButtonClick" prefHeight="25.0" prefWidth="160.0" text="Register an account" />
 
 </VBox>

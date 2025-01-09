@@ -9,7 +9,8 @@ import java.io.IOException;
 
 public class StartView {
     @FXML
-    public Button helloButton;
+    public Button loginButton;
+    public Button registerButton;
 
     @FXML
     protected void onLoginButtonClick(ActionEvent event) throws IOException {
@@ -17,7 +18,7 @@ public class StartView {
     }
 
     @FXML
-    protected void onRegisterButtonClick(ActionEvent actionEvent) {
-        helloButton.setStyle("-fx-background-color: #ffffff;");
+    protected void onRegisterButtonClick(ActionEvent actionEvent) throws IOException {
+        Application.getApplication().switchToScene("RegistrationView.fxml");
     }
 }
