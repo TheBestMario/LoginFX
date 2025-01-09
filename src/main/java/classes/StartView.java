@@ -13,7 +13,7 @@ public class StartView {
 
     @FXML
     protected void onLoginButtonClick(ActionEvent event) throws IOException {
-        Application.getSceneController().switchToScene("LoginView.fxml");
+        Application.getApplication().switchToScene("LoginView.fxml");
     }
 
     @FXML

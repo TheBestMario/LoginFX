@@ -9,6 +9,6 @@ public class LoginView {
     @FXML
     public void onSubmitClicked() throws IOException {
         System.out.println("Submit Clicked");
-        Application.getSceneController().switchToScene("StartView.fxml");
+        Application.getApplication().switchToScene("StartView.fxml");
     }
 }
